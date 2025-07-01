@@ -23,7 +23,7 @@ internal static class GitBlamer
         return fileBlameInfo.GetAt(line);
     }
 
-    
+
     static FileBlameInfo InitialiseFile(string filePath)
     {
         string command = $"git blame {filePath} --porcelain";
@@ -34,6 +34,7 @@ internal static class GitBlamer
             RedirectStandardOutput = true,
             UseShellExecute = false,
             CreateNoWindow = true,
+            StandardOutputEncoding = System.Text.Encoding.UTF8,
             WorkingDirectory = Path.GetDirectoryName(filePath)
         };
         process.Start();
